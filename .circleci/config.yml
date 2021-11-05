@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: tiltdev/tilt:latest
+
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.06.10
+      - run: apt update && apt install -y python
+      - run: ctlptl create cluster kind --registry=ctlptl-registry && test.sh
