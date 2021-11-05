@@ -2,11 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: tiltdev/tilt:latest
+      - image: tiltdev/tilt-extensions-ci@sha256:94f33b1e3a4863fb5eb3a56edd5d39ce1b56653a858251a962185079ed9cd4d9
 
     steps:
       - checkout
       - setup_remote_docker:
-          version: 20.06.10
-      - run: apt update && apt install -y python
-      - run: ctlptl create cluster kind --registry=ctlptl-registry && test.sh
+          version: 20.10.6
+      - run: ctlptl create cluster kind --registry=ctlptl-registry && ./test.sh
