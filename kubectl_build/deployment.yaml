@@ -19,5 +19,5 @@ spec:
           ports:
             - containerPort: 8000
           readinessProbe:
-            tcpSocket:
+            httpGet:
               port: 8000

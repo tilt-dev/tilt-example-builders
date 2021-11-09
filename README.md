@@ -15,3 +15,16 @@ Drop-in replacement for `docker build` that moves builds off your laptop.
 Install kubectl build: [homepage](https://github.com/vmware-tanzu/buildkit-cli-for-kubectl#getting-started)
 
 Example Tiltfile: [./kubectl_build](./kubectl_build/Tiltfile)
+
+### ko
+
+Turn-key Go apps without any fuss.
+
+Runs `go build` locally and packs it into an image.
+
+`ko` works best when your Go app is a simple static binary, and doesn't have any 
+dependencies on the OS environment (e.g., loading dynamic C libraries.)
+
+Install ko: [homepage](https://github.com/google/ko#install)
+
+Example Tiltfile: [./ko](./ko/Tiltfile)
