@@ -1,0 +1,25 @@
+# -*- mode: Python -*
+
+load('ext://pack', 'pack')
+
+k8s_yaml('deployment.yaml')
+k8s_resource('example-python', port_forwards=8000)
+
+# Add a live_update rule to our docker_build
+congrats = "🎉 Congrats, you ran a live_update! 🎉"
+pack(
+  'example-python-image', '.',
+  buildpacks=[
+    'gcr.io/paketo-buildpacks/python',
+    'gcr.io/paketo-buildpacks/environment-variables',
+  ],
+  env_vars=['BPE_FLASK_ENV=development'],
+  live_update=[
+    sync('.', '/workspace'),
+    run('cd /workspace && pip install -r requirements.txt',
+        trigger='./requirements.txt'),
+
+    # add a congrats message!
+    run('sed -i "s/Hello cats!/{}/g" /workspace/templates/index.html'.
+        format(congrats)),
+  ])

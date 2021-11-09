@@ -28,3 +28,15 @@ dependencies on the OS environment (e.g., loading dynamic C libraries.)
 Install ko: [homepage](https://github.com/google/ko#install)
 
 Example Tiltfile: [./ko](./ko/Tiltfile)
+
+### pack
+
+Stackable image builders to add whatever you need to an image.
+
+Buildpacks give you better control over what ends up in the final container image.
+It's easier to keep out the junk you don't want (like buildtools), and
+keep the good stuff you do want (like hot-reloading).
+
+Install pack: [homepage](https://buildpacks.io/docs/tools/pack/)
+
+Example Tiltfile: [./pack](./pack/Tiltfile)
